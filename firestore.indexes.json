@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "stock_history",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Ticker",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Date",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

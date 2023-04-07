@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="">
+  <meta property="og:image" content="">
+  <meta name="twitter:title" content="Stock Predictor">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='assets/images/logo5.png') }}" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Stock Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/web/assets/mobirise-icons2/mobirise2.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap-grid.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap-reboot.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/datatables/vanilla-dataTables.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/dropdown/css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/socicon/css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/theme/css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/recaptcha.css') }}">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,400;1,700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,400;1,700&display=swap&display=swap"></noscript>
+  <link rel="preload" as="style" href="{{ url_for('static', filename='assets/mobirise/css/mbr-additional.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='assets/mobirise/css/mbr-additional.css') }}" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-bXe2BkMG3qE7tKhKvZquRfMhPsJyuf5+5ezQiYcK/D9SgSxhmgWdK8tuKcxtg4z4iGnLfDm2f4vYte2fpXeC3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script>
+    function showLoading() {
+      var loadingIcon = document.querySelector('.loading-icon');
+      var submitButton = document.querySelector('#submit-button');
+      
+      // Hide the submit button and show the loading icon
+      submitButton.style.display = 'none';
+      loadingIcon.style.display = 'block';
+    }
+    </script> 
+
+</head>
+<body>
+    <section data-bs-version="5.1" class="menu menu1 cid-tAs3JD1qLl" once="menu" id="menu1-3">
+        <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+            <div class="container">
+                <div class="navbar-brand">
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-5" href="#">SP</a></span>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/history">HISTORY</a></li>
+                        <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/contacts">CONTACTS</a>
+                        </li></ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+    
+
+  <section data-bs-version="5.1" class="form1 cid-tAr1JRriWy mbr-fullscreen" id="form1-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+<!--Formbuilder Form-->
+<form action="/predict" method="POST" class="form-with-styler">
+    <div class="dragArea row">
+    <div class="col-12">
+    <h1 class="mbr-section-title mb-4 mbr-fonts-style align-center display-2"><strong> Stock Predictor</strong></h1>
+    </div>
+    <div class="col-12">
+    <p class="mbr-text mbr-fonts-style mb-5 align-center display-7">Please enter only the stock code. Based on past results, AI predicts whether stocks will rise or fall tomorrow. Prediction is measured using scikit-learn machine learning techniques.</p>
+    </div>
+    <div data-for="TICKER" class="col-lg-12 col-md-12 col-sm-12 form-group mb-3">
+    <label for="TICKER-form1-0" class="form-control-label mbr-fonts-style display-7">Stock Ticker / ex) AAPL, TSLA ..</label>
+    <input type="text" name="ticker" placeholder="TICKER" data-form-field="TICKER" class="form-control display-7" value="" id="TICKER-form1-0">
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 form-group" style="" data-for="Max Depth">
+    <label for="Max Depth-form1-0" class="form-control-label mbr-fonts-style display-7">Max Depth (1 ~ 10)</label>
+    <input type="number" name="max_depth" placeholder="Max Depth (1 ~ 10)" max="10" min="1" step="1" data-form-field="Max Depth" class="form-control display-7" value="3" id="Max Depth-form1-0">
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="Min Samples Split">
+    <label for="Min Samples Split-form1-0" class="form-control-label mbr-fonts-style display-7">Min Samples Split (2~10)</label>
+    <input type="number" name="min_samples_split" placeholder="Min Samples Split (2~10)" max="10" min="2" step="1" data-form-field="Min Samples Split" class="form-control display-7" value="4" id="Min Samples Split-form1-0">
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="Random State">
+    <label for="Random State-form1-0" class="form-control-label mbr-fonts-style display-7">Random State (0~100)</label>
+    <input type="number" name="random_state" placeholder="Random State (0~100)" max="100" min="0" step="1" data-form-field="Random State" class="form-control display-7" value="5" id="Random State-form1-0">
+    </div>
+    <div class="col-12 col-md-auto mbr-section-btn">
+    <button  id="submit-button" type="submit" class="btn btn-primary display-4" onclick="showLoading()">Predict</button>
+    </div>
+    </div>
+</form><!--Formbuilder Form-->
+</div>
+        </div>
+    </div>
+</section>
+
+<div class="loading-icon" style="display: none;">
+    <i class="fas fa-spinner fa-spin"></i>
+    <p>Predicting...</p>
+  </div>
+
+
+{% if result %}
+<section data-bs-version="5.1" class="features21 cid-tAr1TlKVxh" id="features22-1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="item mbr-flex">
+                    <div class="icon-box w-100">
+                        <span class="step-number mbr-fonts-style display-1">{{ result[1] }}</span>
+                    </div>
+                    <div class="text-box">
+                        <h4 class="icon-title card-title mbr-black mbr-fonts-style display-2">
+                            <strong>{{ result[2]|float|round(2) }}% </strong></h4>
+                        <h5 class="icon-text mbr-black mbr-fonts-style display-7">{{ ticker }} : {{ result[0] }}</h5>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+{% if history %}
+<section data-bs-version="5.1" class="table1 section-table cid-tAr26qTYhY" id="table1-2">
+    <div class="container-fluid">
+        <div class="media-container-row align-center">
+            <div class="col-12 col-md-12">
+                <h2 class="mbr-section-title mbr-fonts-style mbr-black display-2">
+                    history</h2>
+                <div class="underline align-center pb-3">
+                    <div class="line"></div>
+                </div>
+                
+                <div class="table-wrapper pt-5" style="width: 88%;">
+                    <div class="container-fluid">
+                        <div class="row search">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="dataTables_filter">
+                                    <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+                                    <input class="form-control input-sm" disabled="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid scroll">
+                        <table class="table table-striped isSearch" cellspacing="0" data-empty="No matching records found">
+                            <thead>
+                                <tr class="table-heads">
+                                <th class="head-item mbr-fonts-style display-4">DATE</th><th class="head-item mbr-fonts-style display-4">TICKER</th><th class="head-item mbr-fonts-style display-4">STOCK NAME</th><th class="head-item mbr-fonts-style display-4">PREDICTION</th><th class="head-item mbr-fonts-style display-4">ACCURACY</th><th class="head-item mbr-fonts-style display-4">RESULT</th><th class="head-item mbr-fonts-style display-4">Close</th><th class="head-item mbr-fonts-style display-4">M.DEPTH</th><th class="head-item mbr-fonts-style display-4">m.SPLIT</th><th class="head-item mbr-fonts-style display-4">R.STATE</th></tr>
+                            </thead>
+
+                            <tbody>
+                                {% for record in history %}
+                                <tr> 
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["Date"].strftime('%Y-%m-%d') }}</td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["Ticker"] }}</td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["Stock Name"] }}</td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["Prediction"] }}</td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record.Accuracy|float|round(2) }}%</td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["Result"] }} </td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["Close"]|float|round(2) }}</td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["Depth"] }}</td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["Split"] }}</td>
+                                    <td class="body-item mbr-fonts-style display-7">{{ record["State"] }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="container-fluid table-info-container">
+                        <div class="row info mbr-fonts-style display-7">
+                            <div class="dataTables_info">
+                                <span class="infoBefore">Showing</span>
+                                <span class="inactive infoRows"></span>
+                                <span class="infoAfter">entries</span>
+                                <span class="infoFilteredBefore">(filtered from</span>
+                                <span class="inactive infoRows"></span>
+                                <span class="infoFilteredAfter"> total entries)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section data-bs-version="5.1" class="footer3 cid-tAs51aLNE7" once="footers" id="footer3-4">
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                <li class="foot-menu-item mbr-fonts-style display-7"><a href="/" class="text-white">Home</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="/history" class="text-white">History</a></li><li class="foot-menu-item mbr-fonts-style display-7">
+                        <a class="text-white text-primary" href="/contacts" target="_blank">Contacts</a>
+                    </li></ul>
+            </div>
+            
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-4">
+                    © Copyright 2025 Mobirise. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/ytplayer/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/datatables/vanilla-dataTables.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/dropdown/js/navbar-dropdown.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/theme/js/script.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/formoid.min.js') }}"></script>
+  
+  
+  
+{% if result %}
+<script>
+    document.getElementById('features22-1').scrollIntoView({behavior: 'smooth'});
+</script>
+{% endif %}
+
+</body>
+</html>
